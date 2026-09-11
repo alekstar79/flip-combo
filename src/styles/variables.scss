@@ -1,0 +1,21 @@
+// Common
+$basic-bg-color: #ededed;
+
+// Calculator (from legacy Calc.vue styles)
+$calc-dark-main: #1f1f1f;
+$calc-dark-hover: #2c2c2c;
+$calc-dark-text: #f8fbff;
+
+$calc-light-second: hsla(0, 0%, 100%, 0.25);
+$calc-light-hover: #edf0f5;
+$calc-light-text: #f8fbff;
+
+// Sizes
+$calc-width: 255px;
+$calc-height: 345px;
+$calc-radius: 5px;
+$calc-border-alpha: 0.1;
+
+// Animations
+$flip-duration: 0.7s;
+$bounce-duration: 1s;

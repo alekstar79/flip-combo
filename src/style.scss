@@ -1,0 +1,20 @@
+// ---------------------------------------------------------------------------
+// Package style aggregator
+//
+// In dev mode it is used through the alias
+// `@alekstar79/flip-combo/style.css` in vite.config.ts -
+// so examples in examples/ work as real package consumers.
+//
+// When building the library (vite.lib.config.ts), this file is not included:
+// Vite automatically builds dist/style.css from all `styles.scss` imports
+// in the modules.
+//
+// `as <name>` is required: three modules have the same file name
+// (`styles.scss`), so Sass uses the namespace
+// `styles` by default - and fails with the error "already a module with namespace"
+// ---------------------------------------------------------------------------
+
+@use "./styles/global" as app-global;
+@use "./calc/styles" as calc;
+@use "./calendar/styles" as calendar;
+@use "./flipper/styles" as flipper;

@@ -1,0 +1,60 @@
+@use "../styles/variables" as *;
+
+.flipper {
+  position: fixed;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  user-select: none;
+
+  width: $calc-width;
+  height: $calc-height;
+  cursor: grab;
+
+  // Inner 3D wrapper
+
+  &__inner {
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+    border-radius: $calc-radius;
+    transform-style: preserve-3d;
+    transition: $flip-duration linear;
+
+    box-shadow:
+      0 2px 4px -1px rgba(0, 0, 0, 0.2),
+      0 4px 5px 0 rgba(0, 0, 0, 0.14),
+      0 1px 10px 0 rgba(0, 0, 0, 0.12);
+
+    &--rotated {
+      transform: rotateY(180deg);
+    }
+  }
+
+  &--presentation &__inner {
+    transition-duration: 300ms;
+  }
+
+  // Panels
+
+  &__front,
+  &__back {
+    box-sizing: border-box;
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  &__front {
+    transform: rotateY(0deg);
+  }
+
+  &__back {
+    transform: rotateY(-180deg);
+  }
+}

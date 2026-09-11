@@ -1,0 +1,98 @@
+{
+  "name": "@alekstar79/flip-combo",
+  "description": "Vanilla TypeScript calculator + calendar + 3D flipper. Framework-agnostic, zero dependencies.",
+  "author": "Aleksey Tarasenko <alekstar79@yandex.ru>",
+  "version": "1.0.0",
+  "type": "module",
+  "license": "MIT",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alekstar79/flip-combo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alekstar79/flip-combo/issues"
+  },
+  "homepage": "https://github.com/alekstar79/flip-combo#readme",
+  "keywords": [
+    "calculator",
+    "calendar",
+    "flipper",
+    "typescript",
+    "vanilla",
+    "framework-agnostic",
+    "vue",
+    "react"
+  ],
+  "sideEffects": [
+    "**/*.css",
+    "**/*.scss"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./calc": {
+      "types": "./dist/calc/index.d.ts",
+      "import": "./dist/calc/index.js"
+    },
+    "./calendar": {
+      "types": "./dist/calendar/index.d.ts",
+      "import": "./dist/calendar/index.js"
+    },
+    "./flipper": {
+      "types": "./dist/flipper/index.d.ts",
+      "import": "./dist/flipper/index.js"
+    },
+    "./host": {
+      "types": "./dist/host/index.d.ts",
+      "import": "./dist/host/index.js"
+    },
+    "./utils": {
+      "types": "./dist/utils/index.d.ts",
+      "import": "./dist/utils/index.js"
+    },
+    "./style.css": "./dist/style.css",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts",
+    "dist/style.css",
+    "README.md",
+    "INTEGRATION.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "dev:calc": "vite --open /examples/calc/",
+    "dev:calendar": "vite --open /examples/calendar/",
+    "dev:combo": "vite --open /examples/combo/",
+
+    "build:demo": "tsc --noEmit && vite build",
+    "build:pages": "cross-env-shell GH_PAGES=true \"tsc --noEmit && vite build\"",
+
+    "preview:demo": "vite preview --outDir demo-dist",
+    "preview:pages": "cross-env-shell GH_PAGES=true vite preview --outDir demo-dist",
+
+    "build:lib": "vite build --config vite.lib.config.ts",
+
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run typecheck && npm run test && npm run build:lib"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.2",
+    "cross-env": "^10.1.0",
+    "sass-embedded": "^1.83.0",
+    "typescript": "^5.7.2",
+    "vite": "^8.3.0",
+    "vite-plugin-dts": "^5.1.0",
+    "vitest": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  }
+}

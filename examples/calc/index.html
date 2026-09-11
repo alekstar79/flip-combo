@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calc — usage example</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #ededed;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    #calc-host {
+      width: 255px;
+      height: 345px;
+      border-radius: 5px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="calc-host"></div>
+  <script type="module" src="./main.ts"></script>
+</body>
+
+</html>

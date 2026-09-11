@@ -1,0 +1,314 @@
+@use "../styles/variables" as *;
+
+.calendar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 10px;
+  height: 100%;
+  width: 100%;
+
+  background-color: var(--calendar-bg, transparent);
+  border-radius: $calc-radius;
+  user-select: none;
+  overflow: hidden;
+  cursor: grabbing;
+  z-index: 7;
+
+  &--month-list-open {
+    background-color: transparent;
+  }
+
+  // Header
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+
+    font-weight: 600;
+    color: $calc-light-text;
+  }
+
+  &__month-picker {
+    position: relative;
+    padding: 10px;
+    cursor: pointer;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: $calc-light-hover;
+      opacity: 0;
+      transition: opacity 0.2s linear;
+      will-change: opacity;
+    }
+    &:hover::after {
+      opacity: 0.4;
+    }
+  }
+
+  &__year-picker {
+    display: flex;
+    align-items: center;
+  }
+
+  &__year-value {
+    color: $calc-light-text;
+  }
+
+  &__year-change {
+    display: grid;
+    place-items: center;
+    position: relative;
+
+    margin: 0 7px;
+    height: 35px;
+    width: 35px;
+
+    border-radius: 50%;
+    cursor: pointer;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      border-radius: 50%;
+      background-color: $calc-light-hover;
+      opacity: 0;
+      transition: opacity 0.2s linear;
+      will-change: opacity;
+    }
+    &:hover::after {
+      opacity: 0.4;
+    }
+  }
+
+  // Body
+
+  &__body {
+    padding: 0;
+  }
+
+  &__week-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 5px;
+    height: 40px;
+
+    font-weight: 400;
+    border-bottom: 1px solid hsla(0, 0%, 100%, 0.2);
+  }
+
+  &__week-day {
+    display: grid;
+    place-items: center;
+    color: $calc-light-text;
+  }
+
+  &__days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    color: $calc-light-text;
+  }
+
+  &__day {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 33px;
+    width: 33px;
+    padding: 0;
+
+    font-weight: 500;
+    cursor: pointer;
+
+    animation: to-top 1s forwards;
+
+    &--empty {
+      cursor: default;
+      pointer-events: none;
+    }
+
+    &--today {
+      background-color: $calc-light-second;
+      border-radius: 50%;
+    }
+
+    span {
+      position: absolute;
+      background-color: $calc-light-text;
+      transition:
+        width 0.2s ease-in-out,
+        height 0.2s ease-in-out;
+
+      &:nth-child(1),
+      &:nth-child(3) {
+        width: 2px;
+        height: 0;
+      }
+      &:nth-child(2),
+      &:nth-child(4) {
+        width: 0;
+        height: 2px;
+      }
+
+      &:nth-child(1) {
+        bottom: 0;
+        left: 0;
+      }
+      &:nth-child(2) {
+        top: 0;
+        left: 0;
+      }
+      &:nth-child(3) {
+        top: 0;
+        right: 0;
+      }
+      &:nth-child(4) {
+        bottom: 0;
+        right: 0;
+      }
+    }
+
+    &:hover span {
+      &:nth-child(1),
+      &:nth-child(3) {
+        height: 100%;
+      }
+      &:nth-child(2),
+      &:nth-child(4) {
+        width: 100%;
+      }
+      &:nth-child(2) {
+        transition-delay: 0.2s;
+      }
+      &:nth-child(3) {
+        transition-delay: 0.4s;
+      }
+      &:nth-child(4) {
+        transition-delay: 0.6s;
+      }
+    }
+  }
+
+  // Hide sections when the list is open
+
+  // Legacy: header, body, footer become visibility: hidden,
+  // so numbers and letters do not show through the overlay.
+  &--month-list-open &__header,
+  &--month-list-open &__body,
+  &--month-list-open &__footer {
+    visibility: hidden;
+  }
+
+  // Footer
+
+  &__footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__footer-button {
+    margin: 0 5px;
+    padding: 8px 12px;
+
+    font-family: inherit;
+    font-size: 22px;
+    line-height: 1;
+    color: #fff;
+
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s linear;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+  }
+
+  // Month list overlay
+
+  &__month-list {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    position: absolute;
+    inset: 0;
+
+    padding: 10px;
+
+    font-size: 14px;
+    font-weight: 400;
+
+    // The same translucent color as the card.
+    background-color: var(--calendar-bg, $calc-dark-main);
+
+    transform: scale(1.2);
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+      transform 0.2s ease-in-out,
+      visibility 0.2s;
+
+    z-index: 2;
+
+    &--visible {
+      transform: scale(1);
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    > div {
+      display: grid;
+      place-items: center;
+    }
+
+    &-item {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      height: 100%;
+      width: 100%;
+
+      border-radius: 5px;
+      cursor: pointer;
+      color: $calc-light-text;
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+
+        background-color: $calc-light-hover;
+        opacity: 0;
+        transition: opacity 0.2s linear;
+      }
+      &:hover::after {
+        opacity: 0.4;
+      }
+    }
+  }
+}
+
+@keyframes to-top {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
