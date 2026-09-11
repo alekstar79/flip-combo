@@ -8,6 +8,8 @@
 
 ![flip-combo](./flip-combo.png)
 
+[**Live Demo**](https://alekstar79.github.io/flip-combo)
+
 - **No frameworks.** No Vue, React, or Angular — pure DOM.
 - **No dependencies.** Zero runtime dependencies.
 - **Strict TypeScript.** `strict: true`, fully typed API.
