@@ -1,5 +1,13 @@
 # Vanilla TypeScript calculator + calendar + 3D flipper.
 
+[![Vite](https://img.shields.io/github/package-json/dependency-version/alekstar79/flip-combo/dev/vite?logo=vite&logoColor=white&label=Vite)](https://github.com/alekstar79/flip-combo)
+[![TypeScript](https://img.shields.io/github/package-json/dependency-version/alekstar79/flip-combo/dev/typescript?logo=typescript&logoColor=white&label=TypeScript)](https://github.com/alekstar79/flip-combo)
+[![Vitest](https://img.shields.io/github/package-json/dependency-version/alekstar79/flip-combo/dev/vitest?logo=vitest&logoColor=white&label=Vitest)](https://github.com/alekstar79/flip-combo)
+[![Sass](https://img.shields.io/github/package-json/dependency-version/alekstar79/flip-combo/dev/sass-embedded?logo=sass&logoColor=white&label=Sass)](https://github.com/alekstar79/flip-combo)
+[![npm](https://img.shields.io/npm/v/@alekstar79/flip-combo?logo=npm&logoColor=white&label=npm)](https://www.npmjs.com/package/@alekstar79/flip-combo)
+
+![flip-combo](./flip-combo.png)
+
 - **No frameworks.** No Vue, React, or Angular — pure DOM.
 - **No dependencies.** Zero runtime dependencies.
 - **Strict TypeScript.** `strict: true`, fully typed API.
