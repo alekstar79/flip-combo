@@ -7,6 +7,7 @@
   height: 100%;
   width: 100%;
 
+  box-sizing: border-box;
   background-color: var(--calc-bg, transparent);
   border-radius: $calc-radius;
   user-select: none;
