@@ -2,7 +2,7 @@
   "name": "@alekstar79/flip-combo",
   "description": "Vanilla TypeScript calculator + calendar + 3D flipper. Framework-agnostic, zero dependencies.",
   "author": "Aleksey Tarasenko <alekstar79@yandex.ru>",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "license": "MIT",
   "private": false,
@@ -69,15 +69,11 @@
     "dev:calc": "vite --open /examples/calc/",
     "dev:calendar": "vite --open /examples/calendar/",
     "dev:combo": "vite --open /examples/combo/",
-
     "build:demo": "tsc --noEmit && vite build",
     "build:pages": "cross-env-shell GH_PAGES=true \"tsc --noEmit && vite build\"",
-
     "preview:demo": "vite preview --outDir demo-dist",
     "preview:pages": "cross-env-shell GH_PAGES=true vite preview --outDir demo-dist",
-
     "build:lib": "vite build --config vite.lib.config.ts",
-
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
